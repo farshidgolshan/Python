@@ -1,0 +1,38 @@
+Hi, this is Bing. I can try to help you with your code.blush
+
+I think the problem is in your dictionary comprehension syntax. You are missing a comma after the question name in the inner dictionary. This causes a syntax error and prevents the creation of the answer column.
+
+According to https://www.geeksforgeeks.org/python-dictionary-comprehension/, the general syntax for dictionary comprehension is:
+
+new_dictionary = {key: value for (key,value) in iterable}
+
+In your case, you should write something like this:
+
+`{
+
+Get the question name using f-string
+f'Question {question + 1}':  # Add a comma here!
+
+Generate a random answer for this question based on a weighted choice with probabilities proportional to difficulty level and desired percentage
+You can change this to another distribution if you want
+random.choices(
+possible_answers,
+weights=[
+
+Assign a higher weight for no answer if difficulty level is low or desired percentage is low
+(1 - difficulty) * (1 - percentage),
+
+Assign a lower weight for wrong answers if difficulty level is high or desired percentage is high
+difficulty * (1 - percentage) / 5,
+difficulty * (1 - percentage) / 5,
+difficulty * (1 - percentage) / 5,
+difficulty * (1 - percentage) / 5,
+difficulty * (1 - percentage) / 5,
+
+Assign a higher weight for correct answer if difficulty level is high and desired percentage is high
+difficulty * percentage
+]
+)[0],
+}`
+
+I hope this helps. Let me know if you have any other questions.blush
